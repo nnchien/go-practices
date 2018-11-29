@@ -6,8 +6,7 @@ import (
 	"strings"
 	"fmt"
 	"log"
-
-	"github.com/nnchien/backend-2018/golang/practices/server/handlers"
+	"github.com/nnchien/go-practices/server/handlers"
 )
 
 var Session *http.Server
@@ -59,5 +58,6 @@ func Start() {
 	handler := handlers.NewHandler()
 	r = newRouter()
 	r.Add("/push", handler.Push)
+	fmt.Println("Server is running at port :8080")
 	Run(":8080")
 }

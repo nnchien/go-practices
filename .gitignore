@@ -10,5 +10,12 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# MAC OS files
 .DS_Store
+
+# GoLand files
 .idea/
+
+# deploy files
+deploy/deploy

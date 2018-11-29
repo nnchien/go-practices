@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/nnchien/backend-2018/golang/practices/internal/fsm"
-	"github.com/nnchien/backend-2018/golang/practices/services"
+	"github.com/nnchien/go-practices/services"
+	"github.com/nnchien/go-practices/internal/fsm"
 )
 
 type Handler struct {
