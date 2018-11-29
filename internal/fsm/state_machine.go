@@ -11,7 +11,7 @@ import (
 
 var (
 	randomer = rand.New(rand.NewSource(99))
-	regexer, _ = regexp.Compile("deploy:([0-9]+)")
+	regexer, _ = regexp.Compile("cmd:([0-9]+)")
 )
 
 type State struct {
@@ -46,7 +46,7 @@ func (f *FiniteStateMachine) turnON() {
 
 func (f *FiniteStateMachine) PushCommand(command string) (int, error) {
 	if !regexer.MatchString(command) {
-		return 400, errors.New("Wrong format!")
+		return 400, errors.New("Wrong format! expect something like cmd:([0-9]+)")
 	}
 	if f.currentState.Name != STAND_BY.Name {
 		return 403, errors.New("Device is not ready to receive command!")
