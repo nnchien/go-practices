@@ -9,9 +9,9 @@ ADD . /go/src/github.com/nnchien/go-practices
   # (You may fetch or manage dependencies here,
   # either manually or with a tool like "godep".)
 RUN go install github.com/nnchien/go-practices
-
+RUN go build github.com/nnchien/go-practices/deploy
   # Run the outyet command by default when the container starts.
-ENTRYPOINT /go/bin/go-practices
+ENTRYPOINT /go/bin/deploy
 
   # Document that the service listens on port 8080.
 EXPOSE 8080
