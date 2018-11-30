@@ -1,4 +1,25 @@
 steps:
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'deploy/staging/deployments/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'deploy/staging/services/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['run', 'nnchien-practices', '--image=gcr.io/nnchien-practices/go-practices:latest', '--port=8080']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['get', 'pods']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/nnchien-practices/go-practices', '.']
   timeout: 500s
