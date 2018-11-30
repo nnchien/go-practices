@@ -1,13 +1,27 @@
-kind: "Service"
-apiVersion: "v1"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "nnchien-practices"
-  namespace: "default"
+  creationTimestamp: 2018-11-29T08:57:59Z
+  labels:
+    run: nnchien-practices
+  name: nnchien-practices
+  namespace: default
+  resourceVersion: "2128"
+  selfLink: /api/v1/namespaces/default/services/nnchien-practices
+  uid: debae627-f3b4-11e8-bc07-42010a940053
 spec:
-  selector:
-    app: "nnchien-practices"
+  clusterIP: 10.3.245.106
+  externalTrafficPolicy: Cluster
   ports:
-  - protocol: "TCP"
+  - nodePort: 31508
     port: 80
-    targetPort: 80
-  type: "LoadBalancer"
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: nnchien-practices
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.198.200.93

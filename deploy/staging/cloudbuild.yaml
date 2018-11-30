@@ -9,6 +9,16 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'deploy/staging/deployments/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'deploy/staging/services/']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 timeout: 660s
 tags: ['go-practices']
 images: ['gcr.io/nnchien-practices/go-practices']
