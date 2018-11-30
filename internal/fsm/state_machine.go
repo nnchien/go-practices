@@ -11,7 +11,7 @@ import (
 
 var (
 	randomer = rand.New(rand.NewSource(99))
-	regexer, _ = regexp.Compile("cmd:([0-9]+)")
+	regexer, _ = regexp.Compile("([a-zA-Z0-9]+)")
 )
 
 type State struct {
