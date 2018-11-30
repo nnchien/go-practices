@@ -6,6 +6,7 @@ import (
 	"strings"
 	"fmt"
 	"log"
+
 	"github.com/nnchien/go-practices/server/handlers"
 )
 
@@ -56,8 +57,11 @@ func (rt *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func Start() {
 	handler := handlers.NewHandler()
+	fsmHandler := handlers.NewFSMHandler()
+
 	r = newRouter()
-	r.Add("/push", handler.Push)
+	r.Add("/health_check", handler.HealthCheck)
+	r.Add("/push", fsmHandler.Push)
 	fmt.Println("Server is running at port :8080")
 	Run(":8080")
 }

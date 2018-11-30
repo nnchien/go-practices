@@ -6,11 +6,19 @@ import (
 )
 
 type Handler struct {
+
+}
+
+func NewHandler() services.Services {
+	return &Handler{}
+}
+
+type FSMHandler struct {
 	fsm *fsm.FiniteStateMachine
 }
 
-func NewHandler() services.FSMServices {
-	return &Handler{
+func NewFSMHandler() services.FSMServices {
+	return &FSMHandler{
 		fsm: fsm.FSM,
 	}
 }
