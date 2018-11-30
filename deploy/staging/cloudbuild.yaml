@@ -1,0 +1,14 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/nnchien-practices/go-practices', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/nnchien-practices/go-practices']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/staging', 'nnchien-practices=gcr.io/nnchien-practices/go-practices']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+timeout: 660s
+tags: ['go-practices']
+images: ['gcr.io/nnchien-practices/go-practices']

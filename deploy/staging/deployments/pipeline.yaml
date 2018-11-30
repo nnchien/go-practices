@@ -1,0 +1,23 @@
+apiVersion: V1
+kind: Deployment
+metadata:
+  labels:
+    app: go-practices
+  name: go-practices
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: go-practices
+  template:
+    metadata:
+      labels:
+        app: go-practices
+    spec:
+      containers:
+      - image: gcr.io/nnchien-practices/go-practices:latest
+        name: nnchien-practices
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP

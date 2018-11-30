@@ -135,7 +135,7 @@ func init() {
 	FSM.addTransition(STAND_BY, func(i int) string {return STAND_BY.Name})
 	FSM.addTransition(COMMAND_RECEIVE, func(i int) string {return COMMAND_ENCRYPTING.Name})
 	FSM.addTransition(COMMAND_ENCRYPTING, func(i int) string {
-		if i > 10 { return COMMAND_BROADCASTING.Name }
+		if i > 50 { return COMMAND_BROADCASTING.Name }
 		return COMMAND_ERROR.Name
 	}) // simulate 10% fail to encrypt command
 	FSM.addTransition(COMMAND_BROADCASTING, func(i int) string {return STAND_BY.Name})
