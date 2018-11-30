@@ -6,7 +6,6 @@ metadata:
     run: nnchien-practices
   name: nnchien-practices
   namespace: default
-  resourceVersion: "2128"
   selfLink: /api/v1/namespaces/default/services/nnchien-practices
   uid: debae627-f3b4-11e8-bc07-42010a940053
 spec:
