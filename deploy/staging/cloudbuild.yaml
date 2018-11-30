@@ -9,26 +9,6 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['run', 'nnchien-practices', '--image=gcr.io/nnchien-practices/go-practices:latest', '--port=8080']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['get', 'pods']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['expose', 'deployment', 'nnchien-practices', '--type=LoadBalancer', '--port=80', '--target-port=8080']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['get', 'svc']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 timeout: 660s
 tags: ['go-practices']
 images: ['gcr.io/nnchien-practices/go-practices']
