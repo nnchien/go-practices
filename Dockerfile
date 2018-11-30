@@ -4,6 +4,6 @@ WORKDIR /go/src/github.com/nnchien/go-practices/
 
 COPY . .
 
-RUN cd deploy;go build
+RUN cd deploy; go install; go build
 
-CMD ["/go/bin/deploy"]
+CMD ["/go/src/github.com/nnchien/go-practices/deploy/deploy"]
