@@ -1,13 +1,13 @@
-kind: Service
-apiVersion: v1
+kind: "Service"
+apiVersion: "v1"
 metadata:
-  name: nnchien-practices
-  namespace: default
+  name: "nnchien-practices"
+  namespace: "default"
 spec:
   selector:
-    app: nnchien-practices
+    app: "nnchien-practices"
   ports:
-  - protocol: TCP
+  - protocol: "TCP"
     port: 80
     targetPort: 80
-  type: LoadBalancer
+  type: "LoadBalancer"
