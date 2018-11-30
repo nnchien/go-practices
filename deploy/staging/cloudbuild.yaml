@@ -1,14 +1,4 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/nnchien-practices/go-practices', '.']
-  timeout: 500s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/nnchien-practices/go-practices']
-- name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', 'deployment/go-practices', 'go-practices=gcr.io/nnchien-practices/go-practices']
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'deploy/staging/deployments/']
   env:
@@ -20,5 +10,35 @@ steps:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 timeout: 660s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/nnchien-practices/go-practices', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/nnchien-practices/go-practices']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/go-practices', 'go-practices=gcr.io/nnchien-practices/go-practices']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['run', 'nnchien-practices', '--image=gcr.io/nnchien-practices/go-practices:latest', '--port=8080']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['get', 'pods']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['expose', 'deployment', 'nnchien-practices', '--type=LoadBalancer', '--port=80', '--target-port=8080']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['get', 'svc']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
 tags: ['go-practices']
 images: ['gcr.io/nnchien-practices/go-practices']
