@@ -9,7 +9,6 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
-timeout: 660s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/nnchien-practices/go-practices', '.']
   timeout: 500s
@@ -40,5 +39,6 @@ timeout: 660s
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1'
   - 'CLOUDSDK_CONTAINER_CLUSTER=nnchien-practices'
+timeout: 660s
 tags: ['go-practices']
 images: ['gcr.io/nnchien-practices/go-practices']
